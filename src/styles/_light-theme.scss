@@ -1,0 +1,15 @@
+@use './variables' as *;
+
+@mixin light-theme {
+  // Variáveis CSS
+  --primary: #{$primary};
+  --secondary: #{$secondary};
+  --bg-primary: #ffffff;
+  --bg-secondary: #f5f5f5;
+  --text-primary: #212121;
+  --text-secondary: #757575;
+  
+  // Variáveis específicas para Bootstrap
+  --bs-primary: #{$primary};
+  --bs-secondary: #{$secondary};
+}

@@ -1,0 +1,106 @@
+// 1. Primeiro carregue suas variáveis
+@use './variables' as *;
+
+// 2. Depois o Bootstrap com valores padrão
+@use "bootstrap/scss/bootstrap" with ($primary: $primary,
+  $secondary: $secondary,
+  $success: $success,
+  $warning: $warning,
+  $danger: $danger,
+  $info: $info);
+
+// 3. Depois seus temas
+@use './light-theme' as light;
+@use './dark-theme' as dark;
+
+// 4. Aplicar temas
+:root {
+  @include light.light-theme;
+
+  /* Cores para mensagens */
+  --error-bg: #f8d7da;
+  --error-text: #721c24;
+  --error-color: #dc3545;
+
+  --warning-bg: #fff3cd;
+  --warning-text: #856404;
+  --warning-color: #ffc107;
+
+  --info-bg: #d1ecf1;
+  --info-text: #0c5460;
+  --info-color: #17a2b8;
+
+  --success-bg: #d4edda;
+  --success-text: #155724;
+  --success-color: #28a745;
+}
+
+.dark-theme {
+  @include dark.dark-theme;
+
+  --error-bg: #3a1a1d;
+  --error-text: #f5c6cb;
+
+  --warning-bg: #3a3100;
+  --warning-text: #ffeeba;
+
+  --info-bg: #0a2a33;
+  --info-text: #bee5eb;
+
+  --success-bg: #1a3121;
+  --success-text: #c3e6cb;
+}
+
+// 5. Estilos globais
+body {
+  margin: 0;
+  font-family: var(--bs-body-font-family);
+  background-color: var(--bg-primary);
+  color: var(--text-primary);
+  transition: all 0.3s ease;
+
+  .form-control {
+    transition: all 0.3s ease;
+    padding: 10px 40px 10px 15px;
+
+    &::placeholder {
+      transition: opacity 0.3s ease;
+    }
+
+    &:focus::placeholder {
+      opacity: 0.7;
+    }
+  }
+}
+
+.dark-theme {
+  .form-control {
+    transition: all 0.3s ease;
+
+    &:focus {
+      transform: scale(1.01);
+    }
+  }
+
+  .btn-primary {
+    position: relative;
+    overflow: hidden;
+
+    &::after {
+      content: '';
+      position: absolute;
+      top: -50%;
+      left: -50%;
+      width: 200%;
+      height: 200%;
+      background: linear-gradient(to bottom right,
+          transparent,
+          transparent,
+          transparent,
+          rgba(255, 255, 255, 0.1),
+          transparent);
+      transform: rotate(30deg);
+      animation: shine 3s infinite;
+    }
+  }
+}

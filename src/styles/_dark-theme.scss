@@ -1,0 +1,39 @@
+@use './variables' as *;
+@use 'sass:color';
+
+@mixin dark-theme {
+  // Cores base
+  $dark-primary: #8a2be2; // Roxo vibrante
+  $dark-secondary: #ff00ff; // Magenta
+  $dark-accent: #00ffff; // Ciano
+
+  // Variáveis CSS
+  --primary: #{$dark-primary};
+  --secondary: #{$dark-secondary};
+  --accent: #{$dark-accent};
+  
+  // Cores de fundo
+  --bg-primary: #121212;
+  --bg-secondary: #1a1a1a;
+  --bg-card: #222222;
+  
+  // Cores de texto
+  --text-primary: #f0f0f0;
+  --text-secondary: #b0b0b0;
+  
+  // Bordas
+  --border-color: #333333;
+  --border-focus: #8a2be2;
+
+  //Placeholder
+  --placeholder-color: #a0a0a0;
+  
+  // Efeitos
+  --glow-effect: 0 0 10px rgba(138, 43, 226, 0.5);
+  
+  // Variáveis Bootstrap customizadas
+  --bs-primary: #{$dark-primary};
+  --bs-secondary: #{$dark-secondary};
+  --bs-body-bg: var(--bg-primary);
+  --bs-body-color: var(--text-primary);
+}

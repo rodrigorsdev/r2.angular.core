@@ -1,0 +1,96 @@
+<div class="login-container" [class.dark-theme]="themeService.isDarkMode()">
+    <div class="theme-toggle">
+        <button (click)="themeService.toggleTheme()" class="btn btn-sm btn-outline-secondary">
+            @if (themeService.isDarkMode()) {
+            ☀️ Light Mode
+            } @else {
+            🌙 Dark Mode
+            }
+        </button>
+    </div>
+
+    <div class="install-btn-container">
+        <button class="install-btn" (click)="installPWA()">
+            <i class="fas fa-download"></i>
+            <span>Instalar App</span>
+        </button>
+    </div>
+
+    <div class="card login-card">
+        <div class="card-body">
+            <h2 class="card-title text-center mb-4">Login</h2>
+
+            <form [formGroup]="form" (ngSubmit)="onSubmit()">
+
+                <div class="mb-3">
+                    <label for="email" class="form-label">Email</label>
+                    <input type="email" class="form-control" id="email" formControlName="email"
+                        placeholder="seu@email.com"
+                        [class.is-invalid]="form.get('email')?.invalid && form.get('email')?.touched">
+
+                    @if (form.get('email')?.invalid && form.get('email')?.touched) {
+                    <div class="invalid-feedback">
+                        @if (form.get('email')?.errors?.['required']) {
+                        <div>Email é obrigatório</div>
+                        }
+                        @if (form.get('email')?.errors?.['email']) {
+                        <div>Email inválido</div>
+                        }
+                    </div>
+                    }
+                </div>
+
+                <div class="mb-3">
+                    <label for="password" class="form-label">Senha</label>
+                    <div class="password-input-container">
+                        <input [type]="showPassword ? 'text' : 'password'" class="form-control" id="password"
+                            formControlName="password" placeholder="••••••"
+                            [class.is-invalid]="form.get('password')?.invalid && form.get('password')?.touched">
+
+                        <button type="button" class="toggle-password-btn" (click)="togglePasswordVisibility()">
+                            <i class="bi" [class.bi-eye]="!showPassword" [class.bi-eye-slash]="showPassword"></i>
+                        </button>
+                    </div>
+
+                     @if (form.get('password')?.invalid && (form.get('password')?.touched || form.get('password')?.dirty)) {
+                    <div class="invalid-feedback d-block">
+                         @if (form.get('password')?.hasError('required')) {
+                        <div>Senha é obrigatória</div>
+                        }
+                        @if (form.get('password')?.hasError('minlength')) {
+                        <div>Mínimo 8 caracteres</div>
+                        }
+                         @if (form.get('password')?.hasError('passwordStrength')) {
+                        <div>
+                            A senha deve conter:
+                            <ul class="password-requirements">
+                                <li [class.valid]="hasUpperCase()">Pelo menos 1 letra maiúscula</li>
+                                <li [class.valid]="hasLowerCase()">Pelo menos 1 letra minúscula</li>
+                                <li [class.valid]="hasNumber()">Pelo menos 1 número</li>
+                                <li [class.valid]="hasSpecialChar()">Pelo menos 1 caractere especial</li>
+                            </ul>
+                        </div>
+                        }
+                    </div>
+                    }
+                </div>
+
+                <!-- Checkbox Lembrar de mim -->
+                <div class="mb-3 form-check">
+                    <input type="checkbox" class="form-check-input" id="rememberMe" formControlName="rememberMe">
+                    <label class="form-check-label" for="rememberMe">Lembrar de mim</label>
+                </div>
+
+                <!-- Botão de Login -->
+                <button type="submit" class="btn btn-primary w-100" [disabled]="form.invalid">
+                    Entrar
+                </button>
+            </form>
+
+            <!-- Link Esqueceu a senha -->
+            <div class="mt-3 text-center">
+                <a routerLink="/forgot-password" class="text-muted">Esqueceu a senha?</a>
+            </div>
+        </div>
+    </div>
+</div>

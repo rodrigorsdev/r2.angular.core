@@ -1,0 +1,20 @@
+// Cores base (use valores HEX/RGB reais, não var())
+$primary: #1976d2;
+$secondary: #9c27b0;
+$success: #4caf50;
+$warning: #ff9800;
+$danger: #f44336;
+$info: #00bcd4;
+
+$spacer: 1rem;
+$spacers: (
+  0: 0,
+  1: $spacer * 0.25,
+  2: $spacer * 0.5,
+  3: $spacer,
+  4: $spacer * 1.5,
+  5: $spacer * 3,
+);
+
+$font-family-base: 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif;
+$font-size-base: 1rem;

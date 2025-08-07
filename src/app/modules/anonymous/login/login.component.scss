@@ -1,0 +1,309 @@
+.login-container {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 1rem;
+    background-color: var(--bg-primary);
+    transition: all 0.3s ease;
+
+    .input-wrapper {
+        position: relative;
+
+        .toggle-password {
+            position: absolute;
+            right: 10px;
+            top: 50%;
+            transform: translateY(-50%);
+            background: transparent;
+            border: none;
+            color: #6c757d;
+            cursor: pointer;
+
+            &:hover {
+                color: var(--primary);
+            }
+        }
+    }
+
+    &.dark-theme {
+        background: linear-gradient(to bottom, #0a0a0a, #121212);
+
+        .password-input-container {
+            .toggle-password-btn {
+                color: #aaa;
+
+                &:hover {
+                    color: var(--accent);
+                }
+            }
+        }
+
+        .toggle-password {
+            color: #aaa;
+
+            &:hover {
+                color: var(--accent);
+            }
+        }
+
+        .login-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border-color);
+            box-shadow: var(--glow-effect);
+
+            .card-title {
+                color: var(--primary);
+                text-shadow: 0 0 8px rgba(138, 43, 226, 0.3);
+            }
+
+            .form-control {
+                background: #2a2a2a;
+                border-color: #333;
+                color: #fff;
+
+                &:focus {
+                    border-color: var(--primary);
+                    box-shadow: 0 0 0 0.25rem rgba(138, 43, 226, 0.25);
+                }
+            }
+
+            .btn-primary {
+                background: var(--primary);
+                border: none;
+                font-weight: 600;
+                letter-spacing: 0.5px;
+                transition: all 0.3s;
+
+                &:hover {
+                    background: lighten(#8a2be2, 5%);
+                    transform: translateY(-1px);
+                    box-shadow: 0 4px 15px rgba(138, 43, 226, 0.4);
+                }
+            }
+
+            .form-check-input {
+                &:checked {
+                    background-color: var(--primary);
+                    border-color: var(--primary);
+                }
+            }
+
+            .text-muted {
+                color: var(--text-secondary) !important;
+
+                &:hover {
+                    color: var(--accent) !important;
+                }
+            }
+
+            .btn-outline-secondary {
+                border-color: var(--primary);
+                color: var(--primary);
+
+                &:hover {
+                    background: var(--primary);
+                    color: white;
+                }
+            }
+        }
+
+        .form-control {
+            &::placeholder {
+                color: var(--placeholder-color) !important;
+                opacity: 1; // Garante que a opacidade seja total
+            }
+
+            &::-webkit-input-placeholder {
+                color: var(--placeholder-color) !important;
+            }
+
+            &::-moz-placeholder {
+                color: var(--placeholder-color) !important;
+            }
+
+            &:-ms-input-placeholder {
+                color: var(--placeholder-color) !important;
+            }
+
+            &:-moz-placeholder {
+                color: var(--placeholder-color) !important;
+            }
+        }
+
+        .input-wrapper .invalid-icon {
+            background: #2d2d2d;
+            color: #ff6b6b; // Vermelho mais claro para melhor contraste
+            box-shadow: 0 0 0 2px #ff3d3d;
+        }
+
+        .is-invalid {
+            border-color: #ff3d3d;
+            background-image: none; // Remove o ícone padrão do Bootstrap
+        }
+    }
+
+    .is-invalid {
+        padding-right: 35px; // Espaço para o ícone
+        background-image: none; // Remove o ícone padrão do Bootstrap
+    }
+
+    .theme-toggle {
+        position: absolute;
+        top: 1rem;
+        right: 1rem;
+    }
+
+    .login-card {
+        width: 100%;
+        max-width: 400px;
+        background-color: var(--card-bg, #ffffff);
+        border: 1px solid var(--border-color, #e0e0e0);
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+
+        .card-title {
+            color: var(--text-primary);
+        }
+
+        .form-control {
+            background-color: var(--input-bg, #f8f9fa);
+            border-color: var(--input-border, #ced4da);
+            color: var(--text-primary);
+        }
+
+        .form-check-input {
+            background-color: var(--input-bg, #f8f9fa);
+            border-color: var(--input-border, #ced4da);
+        }
+    }
+
+    @media (max-width: 576px) {
+        .login-card {
+            border: none;
+            box-shadow: none;
+        }
+    }
+}
+
+.password-requirements {
+    margin-top: 0.5rem;
+    padding-left: 1.25rem;
+    font-size: 0.85rem;
+
+    li {
+        color: #dc3545; // Vermelho para não atendido
+        position: relative;
+
+        &.valid {
+            color: #28a745; // Verde para atendido
+
+            &::before {
+                content: "✓";
+                position: absolute;
+                left: -1.2rem;
+            }
+        }
+    }
+}
+
+.password-input-container {
+    position: relative;
+    display: flex;
+    align-items: center;
+
+    &:focus-within {
+        .toggle-password-btn {
+            color: var(--primary);
+        }
+    }
+
+    .form-control {
+        padding-right: 40px;
+        /* Espaço para o botão */
+        width: 100%;
+    }
+
+    .toggle-password-btn {
+        position: absolute;
+        right: 10px;
+        background: transparent;
+        border: none;
+        color: #6c757d;
+        cursor: pointer;
+        padding: 8px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        z-index: 2;
+
+        &:hover {
+            color: var(--primary);
+        }
+
+        i {
+            font-size: 1rem;
+        }
+    }
+}
+
+.toggle-password-btn {
+    transition: color 0.2s ease;
+}
+
+.install-btn-container {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  z-index: 1000;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.install-btn {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 16px;
+  border-radius: 20px;
+  border: none;
+  background-color: var(--primary);
+  color: white;
+  font-weight: 500;
+  cursor: pointer;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  transition: all 0.3s ease;
+  
+  &:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.2);
+  }
+  
+  i {
+    font-size: 16px;
+  }
+}
+
+/* Estilo para tema escuro */
+.dark-theme {
+  .install-btn {
+    background-color: var(--primary);
+    color: white;
+    
+    &:hover {
+      background-color: lighten(#8a2be2, 10%);
+    }
+  }
+}
+
+@media (max-width: 576px) {
+  .install-btn-container {
+    bottom: 15px;
+    right: 15px;
+    
+    .install-btn {
+      padding: 8px 14px;
+      font-size: 14px;
+    }
+  }
+}
