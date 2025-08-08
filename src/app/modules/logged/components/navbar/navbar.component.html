@@ -1,0 +1,24 @@
+<nav class="navbar" [class.dark-theme]="themeService.isDarkMode()">
+  <div class="container-fluid">
+    <!-- Espaço vazio para alinhamento -->
+    <div class="navbar-brand-spacer"></div>
+
+    <!-- Itens à direita -->
+    <div class="navbar-right">
+      <!-- Email do usuário -->
+      <span class="user-email">
+        {{ authenticationService.getAuthenticatedUser()?.name }}
+      </span>
+
+      <!-- Botão de Tema -->
+      <button class="theme-toggle" (click)="toggleTheme()" aria-label="Toggle theme">
+        <i class="bi" [class.bi-sun]="themeService.isDarkMode()" [class.bi-moon]="!themeService.isDarkMode()"></i>
+      </button>
+
+      <!-- Botão Sair -->
+      <button class="logout-btn" (click)="logout()" aria-label="Logout">
+        <i class="bi bi-box-arrow-right"></i>
+      </button>
+    </div>
+  </div>
+</nav>

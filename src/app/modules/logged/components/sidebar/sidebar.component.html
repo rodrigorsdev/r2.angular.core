@@ -1,0 +1,48 @@
+<div class="sidebar" 
+     [class.dark-theme]="themeService.isDarkMode()"
+     [class.expanded]="sidebarService.isExpandedValue"
+     [class.mobile-view]="isMobileView">
+     
+  <div class="sidebar-content">
+    <div class="menu-section">
+      <div class="menu-title">Components</div>
+      <ul>
+        <li>
+          <a (click)="navigateAndClose('/logged/user')" 
+             [class.active]="isActive('/logged/user')">
+            <i class="bi bi-speedometer2 me-2"></i>
+            Usuarios
+          </a>
+        </li>
+        <li>
+          <a (click)="navigateAndClose('/ecommerce/features')" 
+             [class.active]="isActive('/ecommerce/features')">
+            <i class="bi bi-star-fill me-2"></i>
+            Formulario
+          </a>
+        </li>
+      </ul>
+    </div>
+
+    <div class="menu-section">
+      <div class="menu-title">Layout</div>
+      <ul>
+        <li>
+          <a (click)="navigateAndClose('/layout/stepper')" 
+             [class.active]="isActive('/layout/stepper')">
+            <i class="bi bi-123 me-2"></i>
+            Stepper
+          </a>
+        </li>
+        <!-- Adicione outros itens seguindo o mesmo padrão -->
+      </ul>
+    </div>
+  </div>
+
+  <button class="close-sidebar-btn" 
+          *ngIf="isMobileView"
+          (click)="closeSidebar()"
+          aria-label="Fechar menu">
+    <i class="bi bi-x-lg"></i>
+  </button>
+</div>

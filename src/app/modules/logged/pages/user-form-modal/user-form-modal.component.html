@@ -1,0 +1,30 @@
+<div class="modal-backdrop" *ngIf="show">
+  <div class="modal-container">
+    <div class="modal-header">
+      <h5 class="modal-title">{{ data ? 'Editar' : 'Criar' }} Usuário</h5>
+      <button type="button" class="btn-close" (click)="closeModal(false)"></button>
+    </div>
+    <div class="modal-body">
+      <form [formGroup]="form">
+        <div class="mb-3">
+          <label for="name" class="form-label">Nome</label>
+          <input type="text" class="form-control" id="name" formControlName="name">
+        </div>
+        <div class="mb-3">
+          <label for="email" class="form-label">Email</label>
+          <input type="email" class="form-control" id="email" formControlName="email">
+        </div>
+        <div class="mb-3">
+          <label for="birthDate" class="form-label">Data de Nascimento</label>
+          <input type="date" class="form-control" id="birthDate" formControlName="birthDate">
+        </div>
+      </form>
+    </div>
+    <div class="modal-footer">
+      <button type="button" class="btn btn-secondary" (click)="closeModal(false)">Cancelar</button>
+      <button type="button" class="btn btn-primary" (click)="save()" [disabled]="form.invalid">
+        Salvar
+      </button>
+    </div>
+  </div>
+</div>

@@ -7,7 +7,9 @@ import { environment } from "../environments/environment";
 import { SharedModule } from "./modules/shared/shared.module";
 import { AnonymousModule } from "./modules/anonymous/anonymous.module";
 import { FormsModule, ReactiveFormsModule } from "@angular/forms";
-
+import { HTTP_INTERCEPTORS } from "@angular/common/http";
+import { AuthInterceptor } from "./modules/logged/interceptors/auth.interceptor";
+import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
 
 @NgModule({
   declarations: [
@@ -18,8 +20,9 @@ import { FormsModule, ReactiveFormsModule } from "@angular/forms";
     AnonymousModule,
 
     AppRoutingModule,
-    
+
     BrowserModule,
+    BrowserAnimationsModule, 
     FormsModule,
     ReactiveFormsModule,
     ServiceWorkerModule.register('ngsw-worker.js', {
@@ -27,6 +30,13 @@ import { FormsModule, ReactiveFormsModule } from "@angular/forms";
       registrationStrategy: 'registerWhenStable:30000'
     }),
   ],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
+  providers: [
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: AuthInterceptor,
+      multi: true
+    },
+  ]
 })
 export class AppModule { }

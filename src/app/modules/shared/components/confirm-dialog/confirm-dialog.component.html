@@ -1,0 +1,14 @@
+<div class="confirm-dialog-backdrop" *ngIf="visible">
+  <div class="confirm-dialog">
+    <div class="confirm-dialog-header">
+      <h5>{{ title }}</h5>
+    </div>
+    <div class="confirm-dialog-body">
+      <p>{{ message }}</p>
+    </div>
+    <div class="confirm-dialog-footer">
+      <button class="btn btn-secondary" (click)="onCancel()">Cancelar</button>
+      <button class="btn btn-danger" (click)="onConfirm()">Confirmar</button>
+    </div>
+  </div>
+</div>

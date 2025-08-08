@@ -8,7 +8,6 @@ import { UserAuthenticatedDto } from '../dtos/user-authenticated.dto';
 })
 export class AuthenticationService  {
 
-
   constructor(
     private readonly _httpClient: HttpClient
   ) {
@@ -21,5 +20,9 @@ export class AuthenticationService  {
 
   removeAuthenticatedUser() {
     localStorage.removeItem(LocalStorageKeysEnum.user);
+  }
+
+  setAuthenticatedUser(dto: UserAuthenticatedDto) {
+    localStorage.setItem(LocalStorageKeysEnum.user, JSON.stringify(dto));
   }
 }

@@ -4,6 +4,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { ThemeService } from '../../shared/services/theme.service';
 import { MessageService } from '../../shared/services/message.service';
 import { LocalStorageKeysEnum } from '../../shared/enums/local-storage-keys.enum';
+import { AuthenticationService } from '../../logged/services/authentication.service';
 
 @Component({
   selector: 'app-login',
@@ -28,6 +29,7 @@ export class LoginComponent implements OnInit {
     private _renderer: Renderer2,
     private _messageService: MessageService,
     private _route: ActivatedRoute,
+    private _authenticationService: AuthenticationService,
   ) {
 
     this.form = this.fb.group({
@@ -100,6 +102,14 @@ export class LoginComponent implements OnInit {
     } else {
       this._clearCredentials();
     }
+
+    //Implementar o login
+    this._authenticationService.setAuthenticatedUser({
+      email,
+      name:'Rodrigo Oliveira',
+      token: 'test',
+      type: `at`
+    });
 
     this._router.navigate(['/logged/home']);
   }
@@ -175,7 +185,7 @@ export class LoginComponent implements OnInit {
   private _saveCredentials(email: string, password: string): void {
 
     localStorage.setItem(LocalStorageKeysEnum.rememberedEmail, email);
-    const encryptedPassword = btoa(password); 
+    const encryptedPassword = btoa(password);
     localStorage.setItem(LocalStorageKeysEnum.rememberedPassword, encryptedPassword);
   }
 

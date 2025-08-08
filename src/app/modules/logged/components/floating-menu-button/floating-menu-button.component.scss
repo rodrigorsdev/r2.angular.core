@@ -1,0 +1,46 @@
+.floating-menu-btn {
+  position: fixed;
+  bottom: 80px; /* Ajuste esta valor conforme necessário */
+  left: 20px;
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  background-color: var(--primary);
+  color: white;
+  border: none;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1050;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  opacity: 0;
+  transform: translateY(20px);
+  
+  i {
+    font-size: 1.5rem;
+  }
+
+  &.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  &:hover {
+    background-color: var(--primary-dark);
+    transform: translateY(0) scale(1.1);
+  }
+
+  /* Evitar que o botão fique sobre o conteúdo importante */
+  @media (max-height: 600px) {
+    bottom: 20px;
+  }
+}
+
+/* Dark Theme */
+.dark-theme {
+  .floating-menu-btn {
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
+  }
+}

@@ -1,1 +1,12 @@
-<router-outlet></router-outlet>
+<div class="logged-container" [class.dark-theme]="themeService.isDarkMode()">
+  <!-- Navbar Fixa no Topo -->
+  <app-navbar></app-navbar>
+  <!-- Sidebar -->
+  <app-sidebar></app-sidebar>
+  <!-- Botao Sidebar -->
+  <app-floating-menu-button></app-floating-menu-button>
+  <!-- Conteúdo Principal -->
+  <main class="main-content" [class.sidebar-expanded]="(sidebarService.isExpanded$ | async) && isMobileView">
+    <router-outlet></router-outlet>
+  </main>
+</div>
