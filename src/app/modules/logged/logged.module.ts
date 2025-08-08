@@ -11,7 +11,8 @@ import { FloatingMenuButtonComponent } from './components/floating-menu-button/f
 import { ConfirmDialogComponent } from '../shared/components/confirm-dialog/confirm-dialog.component';
 import { UserListComponent } from './pages/user-list/user-list.component';
 import { DateFormatPipe } from "../shared/pipes/date-format.pipe";
-import { UserFormModalComponent } from './pages/user-form-modal/user-form-modal.component';
+import { UserRegisterModalComponent } from './pages/user-register-modal/user-register-modal.component';
+import { UserUpdateModalComponent } from './pages/user-update-modal/user-update-modal.component';
 
 @NgModule({
     declarations: [
@@ -21,7 +22,8 @@ import { UserFormModalComponent } from './pages/user-form-modal/user-form-modal.
         FloatingMenuButtonComponent,
         ConfirmDialogComponent,
         UserListComponent,
-        UserFormModalComponent,
+        UserRegisterModalComponent,
+        UserUpdateModalComponent,
     ],
     imports: [
     LoggedRoutesModule,

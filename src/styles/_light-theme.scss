@@ -1,19 +1,42 @@
 @use './variables' as *;
+@use 'sass:color';
 
 @mixin light-theme {
+  // Cores base - Saúde
+  $health-primary: #1976d2; // Azul confiável (mais sóbrio que o dark mode)
+  $health-secondary: #20c997; // Verde-água mais suave
+  $health-accent: #845ef7; // Roxo profissional
+
   // Variáveis CSS
-  --primary: #{$primary};
-  --secondary: #{$secondary};
- 
-  --bg-primary: #ffffff;
-  --bg-card: #ffffff;
-  --bg-secondary: #f5f5f5;
-  --border-color: #e0e0e0;
-  --text-primary: #212121;
-  --text-secondary: #757575;
-  --placeholder-color: #a0a0a0; 
+  --primary: #{$health-primary};
+  --secondary: #{$health-secondary};
+  --accent: #{$health-accent};
+
+  // Cores de fundo - Claro mas não puro branco
+  --bg-primary: #f8f9fa; // Branco levemente acinzentado
+  --bg-card: #ffffff; // Branco puro para cards
+  --bg-secondary: #e9ecef; // Cinza muito claro
   
-  // Variáveis específicas para Bootstrap
-  --bs-primary: #{$primary};
-  --bs-secondary: #{$secondary};
+  // Cores de texto - Contraste saudável
+  --text-primary: #212529; // Quase preto (90% opacidade)
+  --text-secondary: #495057; // Cinza escuro
+  --placeholder-color: #868e96; // Placeholder visível
+
+  // Bordas
+  --border-color: #ced4da; // Bordas suaves
+  --border-focus: #1976d2; // Destaque em foco
+
+  // Efeitos
+  --glow-effect: 0 0 8px rgba(25, 118, 210, 0.1); // Sombra sutil
+
+  // Variáveis Bootstrap
+  --bs-primary: #{$health-primary};
+  --bs-secondary: #{$health-secondary};
+  --bs-body-bg: var(--bg-primary);
+  --bs-body-color: var(--text-primary);
+
+  // Cores de feedback (consistente com dark mode)
+  --success: #2b8a3e; // Verde mais sóbrio
+  --warning: #e67700; // Laranja terroso
+  --danger: #c92a2a; // Vermelho discreto
 }

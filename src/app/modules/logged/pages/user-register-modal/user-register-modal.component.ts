@@ -1,15 +1,16 @@
-import { Component, Input, Output, EventEmitter } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { UserService } from '../../services/user.service';
-import { UserGetResponseDto } from '../../dtos/user-get-response.dto';
+import { Component, EventEmitter, Input, Output } from "@angular/core";
+import { FormBuilder, FormGroup, Validators } from "@angular/forms";
+import { UserService } from "../../services/user.service";
+import { UserGetResponseDto } from "../../dtos/user-get-response.dto";
 
 @Component({
-    selector: 'app-user-form-modal',
-    templateUrl: './user-form-modal.component.html',
-    styleUrls: ['./user-form-modal.component.scss'],
+    selector: 'app-user-register-modal',
+    templateUrl: './user-register-modal.component.html',
+    styleUrls: ['./user-register-modal.component.scss'],
     standalone: false,
 })
-export class UserFormModalComponent {
+export class UserRegisterModalComponent {
+
     @Input() data: UserGetResponseDto | null = null;
     @Output() close = new EventEmitter<boolean>();
 
@@ -25,18 +26,6 @@ export class UserFormModalComponent {
             email: ['', [Validators.required, Validators.email]],
             birthDate: ['', Validators.required]
         });
-    }
-
-    ngOnChanges(): void {
-        if (this.data) {
-            this.form.patchValue({
-                name: this.data.name,
-                email: this.data.email,
-                birthDate: this.data.birthDate
-            });
-        } else {
-            this.form.reset();
-        }
     }
 
     save(): void {

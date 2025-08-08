@@ -2,38 +2,43 @@
 @use 'sass:color';
 
 @mixin dark-theme {
-  // Cores base
-  $dark-primary: #8a2be2; // Roxo vibrante
-  $dark-secondary: #ff00ff; // Magenta
-  $dark-accent: #00ffff; // Ciano
+  // Cores base - Tons profissionais para saúde
+  $dark-primary: #4dabf7; // Azul confiável (como hospitais)
+  $dark-secondary: #63e6be; // Verde-água refrescante
+  $dark-accent: #9775fa; // Roxo suave (acessibilidade)
 
   // Variáveis CSS
   --primary: #{$dark-primary};
   --secondary: #{$dark-secondary};
   --accent: #{$dark-accent};
   
-  // Cores de fundo
-  --bg-primary: #121212;
-  --bg-secondary: #1a1a1a;
-  --bg-card: #222222;
+  // Cores de fundo - Mais suaves que preto puro
+  --bg-primary: #121a26; // Azul escuro neutro
+  --bg-secondary: #1a243a; // Mais claro que o primary
+  --bg-card: #1e2a47; // Cards com contraste suave
   
-  // Cores de texto
-  --text-primary: #f0f0f0;
-  --text-secondary: #b0b0b0;
+  // Cores de texto - Legibilidade garantida
+  --text-primary: rgba(233, 236, 239, 0.95); // Branco levemente azulado
+  --text-secondary: #adb5bd; // Cinza azulado para textos secundários
   
-  // Bordas
-  --border-color: #333333;
-  --border-focus: #8a2be2;
+  // Bordas e divisórias
+  --border-color: #2c3a58; // Bordas discretas
+  --border-focus: #4dabf7; // Destaque em foco
 
-  //Placeholder
-  --placeholder-color: #a0a0a0;
-  
-  // Efeitos
-  --glow-effect: 0 0 10px rgba(138, 43, 226, 0.5);
+  // Placeholder
+  --placeholder-color: #6c757d; // Mais visível que o anterior
+
+  // Efeitos - Mais sutis
+  --glow-effect: 0 0 8px rgba(77, 171, 247, 0.3); // Brilho suave azul
   
   // Variáveis Bootstrap customizadas
   --bs-primary: #{$dark-primary};
   --bs-secondary: #{$dark-secondary};
   --bs-body-bg: var(--bg-primary);
   --bs-body-color: var(--text-primary);
+
+  // Cores de feedback (opcional)
+  --success: #40c057; // Verde para confirmações
+  --warning: #ffa94d; // Laranja para avisos
+  --danger: #ff6b6b; // Vermelho suave para erros
 }

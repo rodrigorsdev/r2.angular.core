@@ -5,7 +5,7 @@
       <h1 class="page-title mb-0">
         <i class="bi bi-people-fill me-2"></i>Usuários
       </h1>
-      <p class="page-subtitle text-muted mb-0">Gerencie os usuários do sistema</p>
+      <p class="page-subtitle mb-0">Gerencie os usuários do sistema</p>
     </div>
     <div class="page-actions">
       <button class="btn btn-primary btn-hover-glow" (click)="openCreateModal()">
@@ -59,10 +59,13 @@
   </div>
 </div>
 
-<!-- Modal de Cadastro/Edição -->
-@if(showModal){
-<app-user-form-modal [data]="selected" (close)="handleModalClose($event)">
-</app-user-form-modal>
+@if(showRegisterModal){
+<app-user-register-modal (close)="handleRegisterModalClose($event)"></app-user-register-modal>
+}
+
+<!-- Modal de Edição -->
+@if(showUpdateModal){
+<app-user-update-modal [data]="selected" (close)="handleUpdateModalClose($event)"></app-user-update-modal>
 }
 
 <!-- Modal de Confirmação -->

@@ -135,34 +135,41 @@
 
 /* Dark Theme */
 .dark-theme {
-  .page-header {
-    border-bottom-color: rgba(255, 255, 255, 0.1);
-
-    .page-subtitle {
-      color: var(--text-secondary);
-      opacity: 0.8;
-    }
-  }
-
-  .btn-hover-glow {
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
-
-    &:hover {
-      box-shadow: 0 4px 15px rgba(var(--primary-rgb), 0.4);
-    }
-  }
-
   .table {
-    background-color: var(--bg-card);
-    color: var(--text-primary);
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+    // Cores de texto específicas para dark mode
+    --table-text-primary: rgba(255, 255, 255, 0.95);
+    --table-text-secondary: rgba(255, 255, 255, 0.8);
+
+    color: var(--table-text-primary);
 
     th {
-      background-color: rgba(var(--primary-rgb), 0.2);
+      color: var(--primary); // Mantém a cor primária para cabeçalhos
     }
 
+    td {
+      color: var(--table-text-secondary);
+      
+      // Ações mantêm cores específicas
+      .text-primary {
+        color: var(--primary) !important;
+      }
+      .text-danger {
+        color: var(--danger) !important;
+      }
+    }
+
+    // Linha de "Nenhum usuário cadastrado"
+    .text-center {
+      color: var(--table-text-secondary);
+      opacity: 0.9;
+    }
+
+    // Efeito hover mais perceptível
     tr:hover {
-      background-color: rgba(var(--primary-rgb), 0.1);
+      td {
+        color: var(--table-text-primary);
+        background-color: rgba(var(--primary-rgb), 0.15);
+      }
     }
   }
 }

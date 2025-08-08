@@ -15,7 +15,9 @@ export class UserListComponent {
   selected: UserGetResponseDto | null = null;
   selectedIdToDelete: string | null = null;
 
-  showModal = false;
+  showRegisterModal = false;
+  showUpdateModal = false;
+
   showConfirmDialog = false;
   loading = true;
 
@@ -43,16 +45,23 @@ export class UserListComponent {
 
   openCreateModal(): void {
     this.selected = null;
-    this.showModal = true;
+    this.showRegisterModal = true;
   }
 
   openEditModal(dto: UserGetResponseDto): void {
     this.selected = { ...dto };
-    this.showModal = true;
+    this.showUpdateModal = true;
   }
 
-  handleModalClose(result: boolean): void {
-    this.showModal = false;
+  handleRegisterModalClose(result: boolean): void {
+    this.showRegisterModal = false;
+    if (result) {
+      this.loadUsers();
+    }
+  }
+
+   handleUpdateModalClose(result: boolean): void {
+    this.showUpdateModal = false;
     if (result) {
       this.loadUsers();
     }
